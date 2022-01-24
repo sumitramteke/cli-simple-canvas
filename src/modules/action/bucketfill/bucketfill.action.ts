@@ -22,10 +22,10 @@ const floodFill = (
   newChar: string,
 ) => {
   if (x < 0 || x >= X || y < 0 || y >= Y) return;
-  if (layout[x][y] !== prevChar) return;
+  if (layout[y][x] !== prevChar) return;
 
   // eslint-disable-next-line no-param-reassign
-  layout[x][y] = newChar;
+  layout[y][x] = newChar;
 
   floodFill(layout, X, Y, x + 1, y, prevChar, newChar); // north
   floodFill(layout, X, Y, x - 1, y, prevChar, newChar); // east
@@ -39,14 +39,16 @@ const drawBucketFill = (layout: string[][], x: number, y: number, newChar = 'o')
     if (!validateCoordinates(layout, [x, y])) {
       throw new Error('Invalid coordinates');
     }
-    const X = layout.length;
-    const Y = layout[0].length;
+    x -= 1; y -= 1;
+    const X = layout[0].length;
+    const Y = layout.length;
     // Flood fill algorithm - faster for 2D matrix
-    const prevChar = layout[x][y];
+    const prevChar = layout[y][x];
     if (prevChar === newChar) { return orgLayout; }
     floodFill(layout, X, Y, x, y, prevChar, newChar);
     return layout;
-  } catch {
+  } catch(ex) {
+    console.error(ex);
     return orgLayout;
   }
 };
