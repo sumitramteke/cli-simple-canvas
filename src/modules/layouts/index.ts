@@ -9,6 +9,8 @@ enum layoutType {
 const layoutQues: QuestionCollection<any> = [
   {
     name: 'layoutType',
+    message: 'select layout',
+    default: 'canvas',
     type: 'list',
     choices: [
       { name: 'canvas', value: layoutType.canvas }
@@ -17,7 +19,8 @@ const layoutQues: QuestionCollection<any> = [
   {
     name: 'canvasDimension',
     type: 'input',
-    message: 'Enter width and height with space(eg. 5 4)',
+    default: '20 10',
+    message: 'Enter width and height with space(eg. 20 10)',
     validate: validateCanvas,
     when(answers) {
       return answers.layoutType === layoutType.canvas;
@@ -26,8 +29,8 @@ const layoutQues: QuestionCollection<any> = [
 ];
 
 const drawLayout = async (
-    initialAnswers: Partial<any> | undefined
-  ): Promise<any[][]> => {
+  initialAnswers: Partial<any> | undefined
+): Promise<any[][]> => {
   const answers = await prompt(layoutQues, initialAnswers)
   const { layoutType } = answers;
   switch (layoutType) {

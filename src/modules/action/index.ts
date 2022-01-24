@@ -16,6 +16,7 @@ const actionQues: QuestionCollection<Answers> = [
   {
     name: 'actionType',
     type: 'list',
+    message: 'What to draw',
     choices: [
       { name: 'line', value: ActionType.line },
       { name: 'rectangle', value: ActionType.rectangle },

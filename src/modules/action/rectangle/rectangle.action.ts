@@ -8,7 +8,7 @@ const drawRectangle = (
   const orgLayout = cloneDeep(layout);
   try {
     if (!validateCoordinates(layout, [x1, y1, x2, y2])) {
-      throw 'Invalid coordinates'
+      throw new Error('Invalid coordinates');
     }
     layout = drawLine(layout, [x1, y1, x2, y1]); // top left to top right line
     layout = drawLine(layout, [x2, y1, x2, y2]); // top right to bottom right line
