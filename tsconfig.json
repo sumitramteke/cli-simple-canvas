@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["esnext", "dom"],
+    "module": "commonjs",
+    "outDir": "./lib",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "react",
+    "allowJs": true,
+    "sourceMap": true,
+    "inlineSources": true,
+    "types": ["node"],
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "paths": {
+      "*": ["node_modules/*", "src/types/*"],
+      "@utils/*": ["src/utils/*"],
+      "@modules/*": ["src/modules/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/types"],
+  "exclude": ["node_modules", "**/__tests__/*"]
+}
